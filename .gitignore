@@ -1,3 +1,4 @@
 dist/
 node_modules/
-.appversion.json
+.appversion.*
+.artifact-name
