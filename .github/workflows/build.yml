@@ -13,7 +13,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm pack
-      - run: echo "ARTIFACT_NAME=${cat .artifact-name}" >> $GITHUB_ENV
+      - run: echo "ARTIFACT_NAME=$(cat .artifact-name)" >> $GITHUB_ENV
       - uses: actions/upload-artifact@v2
         with:
           name: gh-packages-test
