@@ -1,10 +1,12 @@
 {
   "name": "gh-packages-test",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Just a simple test project to test GitHub Packages",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node dist/app.js",
+    "serve": "npm run build && npm run start",
+    "start": "node dist/app.js",
+    "prebuild": "node -p \"JSON.stringify({'version': require('./package.json').version})\" > .appversion.json",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +17,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "files":  [
+    "dist/app.js"
+  ],
   "bugs": {
     "url": "https://github.com/voronin-de/gh-packages-test/issues"
   },
