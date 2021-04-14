@@ -17,7 +17,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: gh-packages-test
-          path: {{ env.ARTIFACT_NAME }}
+          path: ./{{ env.ARTIFACT_NAME }}
           retention-days: 1
 
   publish:
