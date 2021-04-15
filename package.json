@@ -19,7 +19,7 @@
   "author": "",
   "license": "ISC",
   "files":  [
-    "dist/app.js"
+    "dist"
   ],
   "bugs": {
     "url": "https://github.com/voronin-de/gh-packages-test/issues"
