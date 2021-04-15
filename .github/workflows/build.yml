@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v1
         with:
           node-version: 14
           registry-url: https://npm.pkg.github.com
@@ -15,7 +15,8 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm pack
-      - run: npm publish
+      - name: publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: echo "ARTIFACT_NAME=$(cat .artifact-name)" >> $GITHUB_ENV
