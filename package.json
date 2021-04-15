@@ -1,6 +1,6 @@
 {
   "name": "@voronin-de/gh-packages-test",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Just a simple test project to test GitHub Packages",
   "main": "index.js",
   "scripts": {
@@ -8,8 +8,7 @@
     "start": "node dist/app.js",
     "prebuild": "node -p \"JSON.stringify({'version': require('./package.json').version})\" > .appversion.json",
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postpack": "node -p \"require('./package.json').name.concat('-').concat(require('./package.json').version).concat('.tgz')\" > .artifact-name"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
