@@ -11,14 +11,7 @@ jobs:
         with:
           node-version: 14
       - run: npm ci
-      - run: npm build
-      - run: tree .
-      - uses: actions/upload-artifact@v2
-        with:
-          name: dist-folder
-          path: dist/*
-          retention-days: 1
-      - run: tree .
+      - run: npm run build
 
   publish:
     needs: build
