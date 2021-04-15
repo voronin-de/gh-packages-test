@@ -12,11 +12,13 @@ jobs:
           node-version: 14
       - run: npm ci
       - run: npm build
+      - run: tree .
       - uses: actions/upload-artifact@v2
         with:
           name: dist-folder
           path: dist/*
           retention-days: 1
+      - run: tree .
 
   publish:
     needs: build
@@ -26,6 +28,7 @@ jobs:
         - uses: actions/download-artifact@v2
           with:
             path: dist/
+        - run: tree .
         - uses: actions/setup-node@v1
           with:
             node-version: 14
