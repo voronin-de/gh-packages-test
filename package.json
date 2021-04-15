@@ -1,5 +1,5 @@
 {
-  "name": "gh-packages-test",
+  "name": "@voronin-de/gh-packages-test",
   "version": "1.0.1",
   "description": "Just a simple test project to test GitHub Packages",
   "main": "index.js",
