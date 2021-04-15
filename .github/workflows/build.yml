@@ -10,18 +10,21 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
-          registry-url: https://npm.pkg.github.com
-          scope: '@voronin-de'
       - run: npm ci
-      - run: npm run build
-      - run: npm pack
-      - name: publish
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: echo "ARTIFACT_NAME=$(cat .artifact-name)" >> $GITHUB_ENV
-      - uses: actions/upload-artifact@v2
-        with:
-          name: gh-packages-test
-          path: ./${{ env.ARTIFACT_NAME }}
-          retention-days: 1
+      - run: npm test
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v2
+        - uses: actions/setup-node@v1
+          with:
+            node-version: 14
+            registry-url: "https://npm.pkg.github.com"
+            scope: "@voronin-de"
+        - run: npm install
+        - run: echo "registry=https://npm.pkg.github.com/@voronin-de" >> .npmrc
+        - run: npm publish
+          env:
+            NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
